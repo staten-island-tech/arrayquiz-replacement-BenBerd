@@ -77,14 +77,45 @@ const titles = [
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
 
+// I tried but can't figure this one out
+
 //Sort books from oldest to most recent
-
+const ordered = books.sort((a, b) => (a.publishDate > b.publishDate ? 1 : -1));
+console.table(ordered);
 //sort books alphabetically
-
+const alpha = books.sort(function (a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});
+console.log(alpha);
 //Find who wrote War and Peace
-
+const find = books.find((book) => book.name === "War and Peace");
+console.log(find);
 //how many books were written before 1900?
-
+console.log[
+  books.filter(function (book) {
+    if (book.publishDate <= 1900) {
+    }
+  })
+].reduce((a, b) => a + b, 0);
 //was there at least one book published within the last 100 years?
-
+const isHundred = books.some(function (book) {
+  const currentYear = new Date().getFullYear();
+  if (currentYear - book.publishDate <= 100) {
+    return true;
+  }
+});
+console.log(isHundred);
 //was every book published within the last 100 years?
+const isEvery = books.every(function (book) {
+  const currentYear = new Date().getFullYear();
+  if (currentYear - book.publishDate <= 100) {
+    return true;
+  }
+});
+console.log(isEvery);
